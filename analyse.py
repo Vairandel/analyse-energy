@@ -72,7 +72,7 @@ def analyseEnergy(log, stress):
     axs[0].set_xticks(logTimes[::10])
     axs[0].set_xticklabels(logTimes[::10], rotation=60)
     axs[1].set_xticks(stressTimes[::10])
-    axs[0].set_xticklabels(stressTimes[::10], rotation=60)
+    axs[1].set_xticklabels(stressTimes[::10], rotation=60)
 
     plt.tight_layout()
 
