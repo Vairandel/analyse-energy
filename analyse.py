@@ -58,13 +58,15 @@ def analyseEnergy(log, stress):
 
     fig, axs = plt.subplots(2, 1, figsize=(30, 7))
 
-    axs[0].plot(logTimes, logIntensities, color='tab:blue', label="Intensité relevées lors de la MàJ")
+    axs[0].plot(logTimes, logIntensities, color='tab:blue')
+    axs[0].plot(logTimes, [logMoy for _ in range(len(logTimes))], color='tab:green', label=f"Moyenne = {logMoy}")
     axs[0].set_xlabel('temps')
     axs[0].set_ylabel('Intensité')
-    axs[0].set_title(f'Intensité relevées sur le Raspberry Pi en fonction du temps\nmoyenne = {logMoy}')
+    axs[0].set_title(f'Intensité relevées sur le Raspberry Pi en fonction du temps')
 
-    axs[1].plot(stressTimes, stressIntensities, color='tab:red',
-                label=f"Intensité relevées lors du stress de la machine\nmoyenne = {stressMoy}")
+    axs[1].plot(stressTimes, stressIntensities, color='tab:red', label=f"Intensité relevées lors du stress de la machine")
+    axs[1].plot(stressTimes, [stressMoy for _ in range(len(stressTimes))], color='tab:green', label=f"moyenne = {stressMoy}")
+
     axs[1].set_xlabel('temps')
     axs[1].set_ylabel('Intensité')
     axs[1].set_title('Intensité relevées lors du stress de la machine en fonction du temps')
@@ -76,7 +78,9 @@ def analyseEnergy(log, stress):
 
     plt.tight_layout()
 
-    plt.legend()
+    axs[0].legend()
+    axs[1].legend()
+
     plt.show()
 
     return None
