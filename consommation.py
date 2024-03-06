@@ -18,6 +18,7 @@ def analyseEnergy(log):
 
     # Iterer sur les lignes
     for line in lines:
+        print(f"{line}")
         if line != "\n":
             result_of_extraction = line.split(",")
 
@@ -35,21 +36,19 @@ def analyseEnergy(log):
 
     moy = sum(intensities) / len(intensities)
 
-    fig, axs = plt.subplots(2, 1, figsize=(30, 7))
+    plt.plot(times, intensities, color='tab:red', label=f"Intensité relevées sur la machine")
+    plt.plot(times, [moy for _ in range(len(times))], color='tab:green', label=f"moyenne = {moy}")
 
-    axs.plot(times, intensities, color='tab:red', label=f"Intensité relevées sur la machine")
-    axs.plot(times, [moy for _ in range(len(times))], color='tab:green', label=f"moyenne = {moy}")
-
-    axs.set_xlabel('temps')
-    axs.set_ylabel('Intensité')
-    axs.set_title('Intensité relevées sur la machine en fonction du temps')
+    plt.xlabel('temps')
+    plt.ylabel('Intensité')
+    plt.title('Intensité relevées sur la machine en fonction du temps')
     
-    axs.set_xticks(times[::10])
-    axs.set_xticklabels(times[::10], rotation=60)
+    plt.xticks(times[::10], rotation=60)
+    # plt.xticklabels(times[::10], rotation=60)
 
     plt.tight_layout()
     
-    axs.legend()
+    plt.legend()
 
     plt.show()
 
