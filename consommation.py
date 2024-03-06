@@ -17,7 +17,8 @@ def analyseEnergy(log):
     intensities = []
 
     # Iterer sur les lignes
-    for line in lines:
+    for i in range(1, len(lines) - 1):
+        line = lines[i]
         print(f"{line}")
         if line != "\n":
             result_of_extraction = line.split(",")
